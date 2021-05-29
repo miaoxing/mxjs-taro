@@ -10,7 +10,10 @@
   "jest": {
     "preset": "jest-preset-miaoxing"
   },
-  "dependencies": {},
+  "dependencies": {
+    "miaoxing": "^0.2.5",
+    "@tarojs/taro": "^3.2.10"
+  },
   "devDependencies": {
     "@miaoxing/dev": "^7.0.1"
   }
