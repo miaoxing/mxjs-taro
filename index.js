@@ -1,5 +1,6 @@
 import $, {Ret} from 'miaoxing';
 import Taro, {getCurrentInstance} from '@tarojs/taro';
+import appendUrl from 'append-url';
 
 $.alert = (message, fn) => {
   return Taro.showModal({
@@ -137,9 +138,19 @@ $.http = (urlOrConfig, config) => {
     });
 };
 
+let apiUrl = '';
+
+$.apiUrl = (url = '', argsOrParams, params) => {
+  url = apiUrl + '/m-api/' + url;
+  return appendUrl(url, argsOrParams, params);
+};
+
+const setApiUrl = (url) => {
+  apiUrl = url;
+};
+
+export {setApiUrl};
+
 // import {url} from '@mxjs/app';
 //
 // $.url = url.to.bind(url);
-// $.apiUrl = url.api.bind(url);
-//
-// window.$ = $;
