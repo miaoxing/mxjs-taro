@@ -1,6 +1,7 @@
 import $, {Ret} from 'miaoxing';
 import Taro, {getCurrentInstance} from '@tarojs/taro';
 import appendUrl from 'append-url';
+import qs from 'query-string';
 
 $.alert = (message, fn) => {
   return Taro.showModal({
@@ -138,6 +139,36 @@ $.http = (urlOrConfig, config) => {
     });
 };
 
+export {onBeforeHttp};
+
+$.url = (url, argsOrParams, params) => {
+  url || (url = 'index');
+
+  let query = '';
+  if (url.includes('?')) {
+    const result = qs.parseUrl(url);
+    url = result.url;
+    query = result.query;
+  }
+
+  if (url.substr(0, 1) !== '/') {
+    // from "products" to "products/index"
+    const parts = url.split('/');
+    if (parts.length === 1) {
+      url += '/index';
+    }
+
+    // from "products/index" to "/pages/products/index"
+    url = '/pages/' + url;
+  }
+
+  if (query) {
+    url += '?' + qs.stringify(query);
+  }
+
+  return appendUrl(url, argsOrParams, params);
+};
+
 let apiUrl = '';
 
 $.apiUrl = (url = '', argsOrParams, params) => {
@@ -150,7 +181,3 @@ const setApiUrl = (url) => {
 };
 
 export {setApiUrl};
-
-// import {url} from '@mxjs/app';
-//
-// $.url = url.to.bind(url);
