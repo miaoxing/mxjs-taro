@@ -13,7 +13,8 @@
   "dependencies": {
     "miaoxing": "^0.2.5",
     "@tarojs/taro": "^3.2.10",
-    "append-url": "^1.0.13"
+    "append-url": "^1.0.13",
+    "query-string": "^6.12.1"
   },
   "devDependencies": {
     "@miaoxing/dev": "^7.0.1"
