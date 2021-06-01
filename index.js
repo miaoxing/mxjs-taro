@@ -81,6 +81,12 @@ $.req = (name) => {
   return getCurrentInstance().router.params[name];
 };
 
+// 发送请求之前执行的操作
+let onBeforeHttp;
+const setOnBeforeHttp = (fn) => {
+  onBeforeHttp = fn;
+};
+
 /**
  * 1. 将 HTTP 状态错误转换为请求错误
  * 2. 默认增加 Accept 头，让接口优先返回 JSON 数据（同 axios）
@@ -90,13 +96,18 @@ $.req = (name) => {
  * @param config
  * @returns {Promise<T>}
  */
-$.http = (urlOrConfig, config) => {
+$.http = async (urlOrConfig, config) => {
   let conf;
   if (typeof urlOrConfig === 'string') {
     conf = config || {};
     conf.url = urlOrConfig;
   } else {
     conf = urlOrConfig;
+  }
+
+  // @internal 用于发送请求前执行登录操作
+  if (conf.skipBeforeEvent !== true && onBeforeHttp) {
+    await onBeforeHttp();
   }
 
   const {header = {}, loading, complete, ...rest} = conf;
@@ -139,7 +150,8 @@ $.http = (urlOrConfig, config) => {
     });
 };
 
-export {onBeforeHttp};
+// @internal 用于发送请求前执行登录操作
+export {setOnBeforeHttp};
 
 $.url = (url, argsOrParams, params) => {
   url || (url = 'index');
