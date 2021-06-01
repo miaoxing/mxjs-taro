@@ -117,6 +117,12 @@ $.http = async (urlOrConfig, config) => {
     header.Accept = 'application/json, text/plain, */*';
   }
 
+  // 如果有 token，附加到请求中
+  const token = Taro.getStorageSync('token');
+  if (token) {
+    header.Authorization = 'Bearer ' + token;
+  }
+
   if (loading) {
     Taro.showNavigationBarLoading();
   }
