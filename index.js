@@ -112,6 +112,12 @@ $.http = async (urlOrConfig, config) => {
 
   const {header = {}, loading, complete, ...rest} = conf;
 
+  // 小程序不支持 PATCH，通过 header 传输给后台
+  if (rest.method?.toUpperCase() === 'PATCH') {
+    rest.method = 'POST';
+    header['X-HTTP-Method-Override'] = 'PATCH';
+  }
+
   // 让接口优先返回 JSON 数据
   if (!header.Accept) {
     header.Accept = 'application/json, text/plain, */*';
