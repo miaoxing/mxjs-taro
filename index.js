@@ -23,7 +23,7 @@ $.confirm = (message, fn) => {
 };
 
 $.ret = (ret, duration = 3000, callback) => {
-  const result = Taro.showToast({
+  Taro.showToast({
     title: ret.message,
     icon: 'none',
     duration,
@@ -31,25 +31,27 @@ $.ret = (ret, duration = 3000, callback) => {
   });
 
   let suc;
-  result.suc = fn => {
-    suc = fn;
-    return result;
-  };
-
   let err;
-  result.err = fn => {
-    err = fn;
-    return result;
-  };
 
-  result.then(() => {
+  const result = new Promise(resolve => setTimeout(() => {
     if (ret.code === 0 && suc) {
       suc();
     }
     if (ret.code !== 0 && err) {
       err();
     }
-  });
+    resolve();
+  }, duration));
+
+  result.suc = fn => {
+    suc = fn;
+    return result;
+  };
+
+  result.err = fn => {
+    err = fn;
+    return result;
+  };
 
   return result;
 };
