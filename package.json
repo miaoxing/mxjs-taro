@@ -10,8 +10,7 @@
   "jest": {
     "preset": "jest-preset-miaoxing"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@miaoxing/dev": "^7.0.1"
   }
