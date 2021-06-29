@@ -3,6 +3,8 @@ import Taro, {getCurrentInstance} from '@tarojs/taro';
 import appendUrl from 'append-url';
 import qs from 'query-string';
 
+const NOT_FOUND = 404;
+
 $.alert = (message, fn) => {
   return Taro.showModal({
     content: message,
@@ -112,7 +114,7 @@ $.http = async (urlOrConfig, config) => {
     await onBeforeHttp();
   }
 
-  const {header = {}, loading, complete, ...rest} = conf;
+  const {header = {}, loading, complete, ignoreError, ...rest} = conf;
 
   // 小程序不支持 PATCH，通过 header 传输给后台
   if (rest.method?.toUpperCase() === 'PATCH') {
@@ -136,7 +138,6 @@ $.http = async (urlOrConfig, config) => {
   }
 
   // TODO
-  // 2. 如果是错误，提示错误
   // 3. 如果是未登录，跳转到登录页面
 
   return Taro
@@ -152,6 +153,11 @@ $.http = async (urlOrConfig, config) => {
       // 将 HTTP 状态错误转换为请求错误
       const isSuccess = res.statusCode >= 200 && res.statusCode < 300 || res.statusCode === 304;
       if (!isSuccess) {
+
+        if (!ignoreError) {
+          $.err(res.statusCode === NOT_FOUND ? '很抱歉，您访问的页面不存在，请检查后再试' : '很抱歉，请求出错，请稍后再试');
+        }
+
         return Promise.reject({
           errMsg: res.statusCode,
           res: res,
