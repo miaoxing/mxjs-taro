@@ -2,6 +2,12 @@ import '../';
 import $ from 'miaoxing';
 
 describe('taro', () => {
+  test('url: index', () => {
+    expect($.url()).toBe('/pages/index/index');
+    expect($.url('index')).toBe('/pages/index/index');
+    expect($.url('index/index')).toBe('/pages/index/index');
+  });
+
   test('url: add /pages', () => {
     expect($.url('tests/edit')).toBe('/pages/tests/edit');
     expect($.url('tests/edit', {id: 1})).toBe('/pages/tests/edit?id=1');
