@@ -1,4 +1,4 @@
-import '../';
+import {setApiUrl} from '../';
 import $ from 'miaoxing';
 
 describe('taro', () => {
@@ -23,5 +23,13 @@ describe('taro', () => {
   test('url: ignore absolute path', () => {
     expect($.url('/pages/test')).toBe('/pages/test');
     expect($.url('/pages/test/index')).toBe('/pages/test/index');
+  });
+
+  test('apiUrl', () => {
+    setApiUrl('https://test.com');
+
+    expect($.apiUrl('articles')).toBe('https://test.com/m-api/articles');
+    expect($.apiUrl('articles/1')).toBe('https://test.com/m-api/articles/1');
+    expect($.apiUrl('articles', {id: 1})).toBe('https://test.com/m-api/articles?id=1');
   });
 });
