@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`http patch 1`] = `
+Array [
+  Array [
+    Object {
+      "complete": [Function],
+      "header": Object {
+        "Accept": "application/json, text/plain, */*",
+        "X-HTTP-Method-Override": "PATCH",
+      },
+      "method": "POST",
+      "url": "test",
+    },
+  ],
+]
+`;
