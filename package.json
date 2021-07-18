@@ -19,5 +19,10 @@
   "devDependencies": {
     "@miaoxing/dev": "^7.0.1",
     "@mxjs/test": "^0.1.8"
+  },
+  "ciDependencies": {
+    "babel-preset-miaoxing": "miaoxing/babel-preset-miaoxing",
+    "jest-preset-miaoxing": "miaoxing/jest-preset-miaoxing",
+    "@miaoxing/dev": "miaoxing/dev"
   }
 }
