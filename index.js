@@ -134,6 +134,10 @@ $.http = async (urlOrConfig, config) => {
   }
 
   if (loading) {
+    Taro.showLoading();
+  }
+
+  if (process.env.TARO_ENV !== 'h5') {
     Taro.showNavigationBarLoading();
   }
 
@@ -145,7 +149,10 @@ $.http = async (urlOrConfig, config) => {
       ...rest,
       header,
       complete: () => {
-        loading && Taro.hideNavigationBarLoading();
+        loading && Taro.hideLoading();
+        if (process.env.TARO_ENV !== 'h5') {
+          Taro.hideNavigationBarLoading();
+        }
         complete && complete();
       },
     })
