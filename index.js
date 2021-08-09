@@ -4,6 +4,8 @@ import appendUrl from 'append-url';
 import qs from 'query-string';
 
 const NOT_FOUND = 404;
+const UNAUTHORIZED_CODE = 401;
+const TIPS_DELAY = 3000;
 
 $.alert = (message, fn) => {
   return Taro.showModal({
@@ -141,9 +143,6 @@ $.http = async (urlOrConfig, config) => {
     Taro.showNavigationBarLoading();
   }
 
-  // TODO
-  // 3. 如果是未登录，跳转到登录页面
-
   return Taro
     .request({
       ...rest,
@@ -169,6 +168,20 @@ $.http = async (urlOrConfig, config) => {
           errMsg: res.statusCode,
           res: res,
         });
+      }
+
+      // 未登录，跳转到登录地址
+      if (typeof res.data.code !== 'undefined' && res.data.code === UNAUTHORIZED_CODE) {
+        Taro.removeStorageSync('token');
+        if (process.env.TARO_ENV === 'h5') {
+          res.data.message = '重新授权中（' + res.data.message + '）';
+          setTimeout(function () {
+            window.location.href = res.data.next.replace(
+              encodeURIComponent('%next%'),
+              encodeURIComponent(window.location.href),
+            );
+          }, TIPS_DELAY);
+        }
       }
 
       res.ret = new Ret(res.data);
