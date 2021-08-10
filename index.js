@@ -2,6 +2,8 @@ import $, {Ret} from 'miaoxing';
 import Taro, {getCurrentInstance} from '@tarojs/taro';
 import appendUrl from 'append-url';
 import qs from 'query-string';
+// TODO 不直接引入 Req，增加 qs 缓存版
+import Req from '@mxjs/app/Req';
 
 const NOT_FOUND = 404;
 const UNAUTHORIZED_CODE = 401;
@@ -83,7 +85,12 @@ $.loading = (options = 'show') => {
   }
 };
 
+const req = new Req();
 $.req = (name) => {
+  // h5 可以直接解析 URL 参数，不用等到 router 实例化
+  if (process.env.TARO_ENV === 'h5') {
+    return req.get(name);
+  }
   return getCurrentInstance().router.params[name];
 };
 
