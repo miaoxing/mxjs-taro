@@ -229,14 +229,18 @@ $.url = (url, argsOrParams, params) => {
 };
 
 let apiUrl = '';
+let apiUrlParam = '';
 
 $.apiUrl = (url = '', argsOrParams, params) => {
   url = apiUrl + '/m-api/' + url;
+  if (apiUrlParam) {
+    url += (url.includes('?') ? '&' : '?') + apiUrlParam;
+  }
   return appendUrl(url, argsOrParams, params);
 };
 
 const setApiUrl = (url) => {
-  apiUrl = url;
+  [apiUrl, apiUrlParam] = url.split('?');
 };
 
 export {setApiUrl};
