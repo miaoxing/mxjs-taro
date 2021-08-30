@@ -1,7 +1,7 @@
 import {setApiUrl} from '../';
 import $ from 'miaoxing';
 
-describe('taro', () => {
+describe('url', () => {
   test('url: index', () => {
     expect($.url()).toBe('/pages/index/index');
     expect($.url('index')).toBe('/pages/index/index');
