@@ -11,9 +11,9 @@ describe('ret', () => {
   });
 
   test('await', async () => {
-    const ms = new Date().getMilliseconds();
+    const time = new Date().getTime();
     await $.ret(new Ret({code: 0, message: 'ok'}), 50);
-    const duration = new Date().getMilliseconds() - ms;
+    const duration = new Date().getTime() - time;
     expect(duration).toBeGreaterThanOrEqual(50);
   });
 
