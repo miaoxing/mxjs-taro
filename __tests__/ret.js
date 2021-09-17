@@ -14,7 +14,8 @@ describe('ret', () => {
     const time = new Date().getTime();
     await $.ret(new Ret({code: 0, message: 'ok'}), 50);
     const duration = new Date().getTime() - time;
-    expect(duration).toBeGreaterThanOrEqual(50);
+    // NOTE: setTimeout 不是完全精准的，可能会提前一点
+    expect(duration).toBeGreaterThanOrEqual(45);
   });
 
   test('suc', async () => {
