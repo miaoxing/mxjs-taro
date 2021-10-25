@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "miaoxing": "^0.2.5",
-    "@tarojs/taro": "^3.2.10",
+    "@tarojs/taro": "^3.3.10",
     "append-url": "^1.0.13",
     "query-string": "^6.12.1"
   },
