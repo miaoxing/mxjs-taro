@@ -1,3 +1,22 @@
+## [0.1.2](https://github.com/miaoxing/mxjs-taro/compare/v0.1.1...v0.1.2) (2022-01-12)
+
+
+### Features
+
+* **taro:** 限制 taro 为 3.3.x，3.4 有 BREAKING CHANGES ([16e16fa](https://github.com/miaoxing/mxjs-taro/commit/16e16fa96e15dfb83e6aad826598116992fb94b0))
+* 更新 taro 到 `^3.3.20` ([e597d83](https://github.com/miaoxing/mxjs-taro/commit/e597d83e2324590d2c4e55153b20609071e90001))
+
+
+
+
+
+### Dependencies
+
+* **miaoxing:** upgrade from `0.3.0` to `0.4.0`
+* **append-url:** upgrade from `1.0.14` to `1.0.15`
+* **@miaoxing/dev:** upgrade from `8.0.0` to `8.0.1`
+* **@mxjs/test:** upgrade from `0.2.0` to `0.2.1`
+
 ## [0.1.1](https://github.com/miaoxing/mxjs-taro/compare/v0.1.0...v0.1.1) (2021-10-28)
 
 
