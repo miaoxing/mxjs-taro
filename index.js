@@ -2,6 +2,7 @@ import $, {Ret} from 'miaoxing';
 import Taro, {getCurrentInstance} from '@tarojs/taro';
 import appendUrl from 'append-url';
 import qs from 'query-string';
+import {url} from '@mxjs/app';
 
 const NOT_FOUND = 404;
 const UNAUTHORIZED_CODE = 401;
@@ -221,19 +222,4 @@ $.url = (url, argsOrParams, params) => {
   return appendUrl(url, argsOrParams, params);
 };
 
-let apiUrl = '';
-let apiUrlParam = '';
-
-$.apiUrl = (url = '', argsOrParams, params) => {
-  url = apiUrl + '/m-api/' + url;
-  if (apiUrlParam) {
-    url += (url.includes('?') ? '&' : '?') + apiUrlParam;
-  }
-  return appendUrl(url, argsOrParams, params);
-};
-
-const setApiUrl = (url) => {
-  [apiUrl, apiUrlParam] = url.split('?');
-};
-
-export {setApiUrl};
+$.apiUrl = url.api.bind(url);
