@@ -1,3 +1,31 @@
+# [0.2.0](https://github.com/miaoxing/mxjs-taro/compare/v0.1.5...v0.2.0) (2022-06-01)
+
+
+### Bug Fixes
+
+* **u, m:** 解决 `hash` 路由模式下，获取参数为空 ([56370b8](https://github.com/miaoxing/mxjs-taro/commit/56370b8b0d70cb54d08fbcf1f84faa554771ed82))
+
+
+### Features
+
+* **taro:** 改为通过 `url.api` 方法来生成接口地址，以便支持 `hash` 路由器模式 ([a9155ce](https://github.com/miaoxing/mxjs-taro/commit/a9155cef4c9782ac9594bae98d82419332fc572e))
+
+
+### BREAKING CHANGES
+
+* **taro:** 移除 `setApiUrl` 方法，改为使用 `wei.setConfigs` 来设置配置
+
+
+
+
+
+### Dependencies
+
+* **miaoxing:** upgrade from `0.4.1` to `0.4.2`
+* **append-url:** upgrade from `1.0.16` to `1.0.17`
+* **@miaoxing/dev:** upgrade from `8.1.0` to `8.1.1`
+* **@mxjs/test:** upgrade from `0.2.4` to `0.2.5`
+
 ## [0.1.5](https://github.com/miaoxing/mxjs-taro/compare/v0.1.4...v0.1.5) (2022-03-31)
 
 
