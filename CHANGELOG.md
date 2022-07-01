@@ -1,3 +1,21 @@
+# [1.0.0](https://github.com/miaoxing/mxjs-taro/compare/v0.2.1...v1.0.0) (2022-07-01)
+
+
+### Features
+
+* 发布 1.0.0 [release 1.0.0] ([08aa7ae](https://github.com/miaoxing/mxjs-taro/commit/08aa7ae6bc296e256eff3b75a642a8b7d5ebeb6b))
+
+
+
+
+
+### Dependencies
+
+* **miaoxing:** upgrade from `0.4.2` to `0.4.3`
+* **append-url:** upgrade from `1.0.17` to `1.0.18`
+* **@miaoxing/dev:** upgrade from `8.1.1` to `8.1.2`
+* **@mxjs/test:** upgrade from `0.2.6` to `1.0.0`
+
 ## [0.2.1](https://github.com/miaoxing/mxjs-taro/compare/v0.2.0...v0.2.1) (2022-06-06)
 
 
