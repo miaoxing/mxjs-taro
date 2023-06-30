@@ -1,6 +1,6 @@
 {
   "name": "@mxjs/taro",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "index.js",
   "license": "MIT",
   "publishConfig": {
@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@miaoxing/dev": "^8.2.1",
-    "@mxjs/test": "^1.0.4"
+    "@mxjs/test": "^1.0.5"
   },
   "ciDependencies": {
     "babel-preset-miaoxing": "miaoxing/babel-preset-miaoxing",
