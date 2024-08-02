@@ -1,3 +1,14 @@
+## [1.0.15](https://github.com/miaoxing/mxjs-taro/compare/v1.0.14...v1.0.15) (2024-08-02)
+
+
+
+
+
+### Dependencies
+
+* **miaoxing:** upgrade from `0.4.16` to `0.4.17`
+* **@mxjs/test:** upgrade from `2.0.1` to `2.0.2`
+
 ## [1.0.14](https://github.com/miaoxing/mxjs-taro/compare/v1.0.13...v1.0.14) (2024-07-31)
 
 
